@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="display-4 font-weight-bold">Resultados</p>
+            <table class="table table-hover mb-3" id="table-accounts">
+                <thead class="thead text-white table-head" style="background-color: #051c48;">
+                  <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Friend</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Sentiment</th>
+                    <th scope="col">Temporal</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Followers</th>
+                    <th scope="col">Following</th>
+                    <th scope="col">Favoritos</th>
+                    <th scope="col">Tweets</th>
+                    <th scope="col">Retweets</th>
+                    <th scope="col">Porcentaje Retweets (%)</th>
+                    <th scope="col">Tiempo entre tweets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for el in data %}
+                        {% for element in el %}
+                            {% if element['status'] == 'Bot' %}
+                                <tr class="table-danger">
+                            {% elif element['status'] == 'Real Account' %}
+                                <tr class="table-success">                                
+                            {% endif %}
+                                    <td scope="row">{{ element['screen_name'] }}</td>
+                                    <td scope="row">{{ element['content'] }}</td>
+                                    <td scope="row">{{ element['friend'] }}</td>
+                                    <td scope="row">{{ element['network'] }}</td>
+                                    <td scope="row">{{ element['sentiment'] }}</td>
+                                    <td scope="row">{{ element['temporal'] }}</td>
+                                    <td scope="row">{{ element['user'] }}</td>
+                                    <td scope="row" class="status">{{ element['status'] }}</td>
+                                    <td scope="row">{{ element['followers'] }}</td>
+                                    <td scope="row">{{ element['following'] }}</td>
+                                    <td scope="row">{{ element['favourites'] }}</td>
+                                    <td scope="row">{{ element['total_tweets'] }}</td>
+                                    <td scope="row">{{ element['retweets'] }}</td>
+                                    <td scope="row">{{ element['percentage_retweets'] }}</td>
+                                    <td scope="row">{{ element['less_time_bet_tweets'] }}</td>
+                                </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>   
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5 font-weight-bold text-center">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="display-4 font-weight-bold">Cantidades</p>
+            <div class="row mb-5 offset-md-2">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Bots
+                        </div>
+                        <div class="card-body">
+                            <p id="positive-total">Total: <span id="bots-count"></span> cuentas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Cuentas Reales
+                        </div>
+                        <div class="card-body">
+                            <p id="positive-total">Total: <span id="real-count"></span> cuentas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Total
+                        </div>
+                        <div class="card-body">
+                            <p id="positive-total">Total: <span id="total-count"></span> cuentas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-3 mb-5" id="graph-card">
+    <canvas id="canvas"></canvas>
+</div>
+
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+{% endblock %}

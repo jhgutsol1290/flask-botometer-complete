@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container mb-5 p-1">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card text-center container-text">
+                <div class="card-body">
+                  <h5 class="card-title">Sección para analizar las cuentas de los retweeteadores de un tweet en específico, máximo 100 RT´s</h5>
+                  <p class="card-text"><small class="text-muted">DIFOMETER</small></p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/search-retweet" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="tweet_id" placeholder="Ingresa ID del tweet a evaluar" class="form-control" autofocus required>
+                </div>
+                <button type="submit" class="btn btn-dark btn-block">
+                    Evaluar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

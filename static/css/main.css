@@ -1,0 +1,28 @@
+body{
+    background: #ecfcff;
+}
+
+#graph-card{
+    -webkit-box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.75);
+    border-collapse: collapse;
+    border-radius: 0.8em;
+    overflow: hidden;
+    width: 45%;
+}
+
+#table-accounts{
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+#main-container{
+    margin-bottom: 100px !important;
+}
+
+.container-text{
+    background-color: #f7f7f7;
+}
+

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container mb-5 p-1">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card text-center container-text">
+                <div class="card-body">
+                  <h5 class="card-title">Sección para obtener los datos de las cuentas que han mencionado algún hashtag o palabra clave</h5>
+                  <p class="card-text"><small class="text-muted">DIFOMETER</small></p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/search-tweet" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="term" placeholder="Ingresa término o hashtag" class="form-control" autofocus required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="items" placeholder="Ingresa número de tweets a evaluar" class="form-control" min="1" max="3000" required>
+                </div>
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect01" name="retweets">
+                      <option selected>Elige opción...</option>
+                      <option value="1">Sin Retweets</option>
+                      <option value="2">Con Retweets</option>
+                    </select>
+                  </div>
+                <button type="submit" class="btn btn-dark btn-block">
+                    Evaluar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
